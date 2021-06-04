@@ -1,0 +1,7 @@
+<select name="hotel" class="form-control tm-select" id="hotel" required>
+    <option value="">Список отелей...</option>
+    {% for hotel in hotel_list %}
+        <option value="{{ hotel.id }}">{{ hotel.title }}</option>
+    {% endfor %}
+</select>
+<i class="fa fa-building-o fa-2x tm-form-element-icon"></i>

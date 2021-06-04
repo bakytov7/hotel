@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div>
+        <div class="container">
+            <div class="d-flex content-wrapper">
+                <div class="ml-auto mr-auto">
+                    <div class="detail-image-wrapper">
+                        <img
+                                src="{{ object.image.url }}"
+                                alt="detail-image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="container">
+            <div class="content-wrapper">
+                <div class="d-flex">
+                    <div class="ml-auto mr-auto">
+                        <div class="detail-title">
+                            <h2 class="text-uppercase rem-1-2">{{ object.title }}</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="ml-auto mr-auto">
+                    <div class="description-wrapper">
+                        {{ object.description|safe }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% load static %}
+<div class="tm-top-bar" id="tm-top-bar">
+    <!-- Top Navbar -->
+    <div class="container">
+        <div class="row">
+
+            <nav class="navbar navbar-expand-lg narbar-light">
+                <a class="navbar-brand mr-auto" href="{% url 'index' %}">
+                    <img src="{% static 'img/logo.png' %}" alt="Site logo">
+                    Hotels
+                </a>
+                <button type="button" id="nav-toggle" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div id="mainNav" class="collapse navbar-collapse tm-bg-white">
+                    <ul class="navbar-nav ml-auto">
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'index' %}">Главная <span class="sr-only">(current)</span></a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'about_us' %}">О нас</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'our_contact' %}">Контакты</a>
+                      </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>

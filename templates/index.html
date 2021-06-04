@@ -1,0 +1,342 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+
+    <div class="tm-section tm-bg-img" id="tm-section-1">
+        <div class="tm-bg-white ie-container-width-fix-2">
+            <div class="container ie-h-align-center-fix">
+                <div class="row">
+                    <div class="col-xs-12 ml-auto mr-auto ie-container-width-fix">
+                        <form action="{% url 'booking' %}" method="post"
+                              class="tm-search-form tm-section-pad-2 booking-form">
+                            {% csrf_token %}
+                            <div class="form-row tm-search-form-row">
+                                <div class="form-group tm-form-element tm-form-element-100">
+                                    <select name="region"
+                                            class="form-control tm-select"
+                                            id="region" required>
+                                        <option value="">Список регионов...
+                                        </option>
+                                        {% for region in region_list %}
+                                            <option value="{{ region.id }}">{{ region.title }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <i class="fa fa-building fa-2x tm-form-element-icon"></i>
+                                </div>
+                                <div class="form-group tm-form-element tm-form-element-100 select-hotel">
+                                    <select name="hotel"
+                                            class="form-control tm-select"
+                                            id="hotel">
+                                        <option value="">Выберите регион...
+                                        </option>
+                                    </select>
+                                    <i class="fa fa-building-o fa-2x tm-form-element-icon"></i>
+                                </div>
+                                <div class="form-group tm-form-element tm-form-element-100">
+                                    <i class="fa fa-user fa-2x tm-form-element-icon"></i>
+                                    <input name="name" type="text"
+                                           class="form-control" id="inputCity"
+                                           placeholder="Имя">
+                                </div>
+                            </div>
+                            <div class="form-row tm-search-form-row">
+                                <div class="form-group tm-form-element tm-form-element-50">
+                                    <i class="fa fa-calendar fa-2x tm-form-element-icon"></i>
+                                    <input name="enter_date" type="text"
+                                           class="form-control"
+                                           id="inputCheckIn"
+                                           placeholder="Дата заезда">
+                                </div>
+                                <div class="form-group tm-form-element tm-form-element-50">
+                                    <i class="fa fa-calendar fa-2x tm-form-element-icon"></i>
+                                    <input name="leave_date" type="text"
+                                           class="form-control"
+                                           id="inputCheckOut"
+                                           placeholder="Дата выезда">
+                                </div>
+                                <div class="form-group tm-form-element tm-form-element-100">
+                                    <i class="fa fa-phone fa-2x tm-form-element-icon"></i>
+                                    <input name="phone" type="text"
+                                           class="form-control" id="inputCity"
+                                           placeholder="Телефон">
+                                </div>
+
+                            </div>
+                            <div class="form-row tm-search-form-row">
+                                <div class="form-group tm-form-element tm-form-element-2">
+                                    <select name="adult"
+                                            class="form-control tm-select"
+                                            id="adult">
+                                        <option value="">Взрослые</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                    </select>
+                                    <i class="fa fa-2x fa-user tm-form-element-icon"></i>
+                                </div>
+                                <div class="form-group tm-form-element tm-form-element-2">
+                                    <select name="child"
+                                            class="form-control tm-select"
+                                            id="children">
+                                        <option value="">Дети</option>
+                                        <option value="0">0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                    </select>
+                                    <i class="fa fa-user tm-form-element-icon tm-form-element-icon-small"></i>
+                                </div>
+                                <div class="form-group tm-form-element tm-form-element-2">
+                                    <select name="room"
+                                            class="form-control tm-select"
+                                            id="room">
+                                        <option value="">Комнаты</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                    </select>
+                                    <i class="fa fa-2x fa-bed tm-form-element-icon"></i>
+                                </div>
+                                <div class="form-group tm-form-element tm-form-element-2">
+                                    <button type="submit"
+                                            class="btn btn-primary tm-btn-search">
+                                        Бронировать
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="form-row clearfix pl-2 pr-2 tm-fx-col-xs">
+                                <p class="tm-margin-b-0">В ближайшее время вам перезвонит менеджер для уточнения деталей и подтверждения бронирования</p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tm-section-2">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <h2 class="tm-section-title">Поможем найти лучшие отели в Кыргызстане</h2>
+                    <p class="tm-color-white tm-section-subtitle">Поможем найти лучший отель для Вас</p>
+                    <a href="#" class="tm-color-white tm-btn-white-bordered">Забронировать </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tm-section tm-position-relative">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"
+             preserveAspectRatio="none" class="tm-section-down-arrow">
+            <polygon fill="#ee5057" points="0,0  100,0  50,60"></polygon>
+        </svg>
+        <div class="container tm-pt-5 tm-pb-4">
+            <div class="row text-center">
+                <article
+                        class="col-sm-12 col-md-4 col-lg-4 col-xl-4 tm-article">
+                    <i class="fa tm-fa-6x fa-legal tm-color-primary tm-margin-b-20"></i>
+                    <h3 class="tm-color-primary tm-article-title-1">Надежно</h3>
+                    <p>Все отели прошли комплексную проверку нашей службы безопасности</p>
+                </article>
+                <article
+                        class="col-sm-12 col-md-4 col-lg-4 col-xl-4 tm-article">
+                    <i class="fa tm-fa-6x fa-plane tm-color-primary tm-margin-b-20"></i>
+                    <h3 class="tm-color-primary tm-article-title-1">Онлайн бронирование</h3>
+                    <p>Поиск на нашем сайте займет считанные минуты, а результат придется по вкусу каждому</p>
+                </article>
+                <article
+                        class="col-sm-12 col-md-4 col-lg-4 col-xl-4 tm-article">
+                    <i class="fa tm-fa-6x fa-life-saver tm-color-primary tm-margin-b-20"></i>
+                    <h3 class="tm-color-primary tm-article-title-1">Заботливая поддержка 24/7</h3>
+                    <p>Менеджеры помогут с выбором отеля и бронированием. Если возникнут вопросы, менеджер будет на связи</p>
+                </article>
+            </div>
+        </div>
+    </div>
+
+    {% for region in region_list %}
+        <div class="tm-section tm-section-pad tm-bg-gray">
+            <div class="container">
+                <div class="custom-header tm-color-primary"><h2>{{ region.title }}</h2></div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8">
+                        <div class="tm-article-carousel">
+                            {% for hotel in region.hotel_set.all %}
+                                <article
+                                        class="tm-bg-white mr-2 tm-carousel-item">
+                                    <img src="{{ hotel.image.url }}" alt="Image"
+                                         class="img-fluid">
+                                    <div class="tm-article-pad">
+                                        <header>
+                                            <h3 class="text-uppercase tm-article-title-2">{{ hotel.title }}</h3>
+                                        </header>
+                                        <p>{{ hotel.short_description }}</p>
+                                        <a href="{% url 'hotel_detail' hotel.id %}"
+                                           class="text-uppercase btn-primary tm-btn-primary">Подробно
+                                            посмотреть</a>
+                                    </div>
+                                </article>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 tm-recommended-container">
+                        <div class="tm-bg-white">
+                            <div class="tm-bg-primary tm-sidebar-pad">
+                                <h3 class="tm-color-white tm-sidebar-title">Рекомендуемые отели</h3>
+                            </div>
+                            <div class="tm-sidebar-pad-2">
+                                {% for rec_hotel in region.recommended_hotels %}
+                                    <a href="{% url 'hotel_detail' rec_hotel.id %}"
+                                       class="media tm-media tm-recommended-item">
+                                        <img src="{{ rec_hotel.image.url }}"
+                                             alt="Image" width="90" height="85">
+                                        <div class="media-body tm-media-body tm-bg-gray">
+                                            <h4 class="text-uppercase tm-font-semibold tm-sidebar-item-title">{{ rec_hotel.title }}</h4>
+                                        </div>
+                                    </a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+    <div class="tm-bg-video" style="padding-top: 100px;">
+        <div class="tm-section tm-section-pad tm-bg-img" id="tm-section-5">
+            <div class="container ie-h-align-center-fix">
+                <div class="row tm-flex-align-center">
+                    <div class="col-xs-12 col-md-12 col-lg-3 col-xl-3 tm-media-title-container">
+                        <h2 class="text-uppercase tm-section-title-2">Все</h2>
+                        <h3 class="tm-color-primary tm-font-semibold tm-section-subtitle-2">
+                            Рекомендуемые отели</h3>
+                    </div>
+                    <div class="col-xs-12 col-md-12 col-lg-9 col-xl-9 mt-0 mt-sm-3">
+                        <div class="ml-auto tm-bg-white-shadow tm-pad tm-media-container">
+                            {% for rec_hotel in rec_hotels %}
+                                <article
+                                        class="media tm-margin-b-20 tm-media-1">
+                                    <img src="{{ rec_hotel.image.url }}"
+                                         alt="Image"
+                                         width="280" height="170">
+                                    <div class="media-body tm-media-body-1 tm-media-body-v-center">
+                                        <a href="{% url 'hotel_detail' rec_hotel.id %}">
+                                            <h3 class="tm-font-semibold tm-article-title-3">{{ rec_hotel.title }}</h3>
+                                        </a>
+                                        <span class="tm-color-primary">{{ rec_hotel.region.title }}</span>
+                                        <p>{{ rec_hotel.short_description }}</p>
+                                    </div>
+                                </article>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tm-section tm-section-pad tm-bg-img tm-position-relative"
+         id="tm-section-6">
+        <div class="container ie-h-align-center-fix">
+            <div class="row" style="justify-content: center;">
+
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-5 mt-3 mt-md-0">
+                    <div class="tm-bg-white tm-p-4">
+
+                        <p class="text-center text-dark call-back-text" style="">
+                            <span style="font-size: 1.3rem; color: red">Владельцам отелей</span><br>
+                            Хотите разместиться на нашем сайте?<br>
+                            напишите нам прямо сейчас
+                        </p>
+                        <form action="{% url 'ajax_contact' %}" method="post"
+                              class="contact-form">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                {% render_field contact_form.name class='form-control' placeholder='Ваше имя' %}
+                            </div>
+                            <div class="form-group">
+                                {% render_field contact_form.email class='form-control' placeholder='Почта' %}
+                            </div>
+                            <div class="form-group">
+                                {% render_field contact_form.subject class='form-control' placeholder='Тема сообщения' %}
+                            </div>
+                            <div class="form-group">
+                                {% render_field contact_form.text class='form-control' placeholder='Текст' %}
+                            </div>
+                            <button type="submit"
+                                    class="btn btn-primary tm-btn-primary">
+                                Отправить
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block js %}
+    <script>
+        $('.contact-form').submit(function (e) {
+            e.preventDefault()
+            const form = $(this)
+            $.ajax({
+                url: form.attr('action'),
+                method: 'POST',
+                data: form.serialize(),
+                success: function (data) {
+                    form.trigger('reset')
+                    alert("Your contact have been excepted! We will call you!")
+                },
+                error: function (xhr, status) {
+                    alert("Sorry, there was a problem!");
+                },
+            })
+        })
+
+        $('select#region').change(function (e) {
+            const region_id = $('#region option:selected').val()
+            let url = "{% url 'ajax_hotel' 'reg_id' %}"; // reg_id for just fake
+            url = url.replace('reg_id', region_id)
+            if (region_id === '') alert('You have to choose correct Region !')
+            else {
+                $.ajax({
+                    url: url,
+                    method: 'get',
+                    success: function (data) {
+                        $('.select-hotel').html(data.select_tag)
+                    },
+                    error: function (xhr, status) {
+                        alert("Sorry, there was a problem!");
+                    },
+                })
+            }
+        })
+    </script>
+{% endblock %}

@@ -1,0 +1,180 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div>
+        <div class="container">
+            <div class="d-flex content-wrapper">
+                <div class="ml-auto mr-auto">
+                    <div class="detail-image-wrapper">
+                        <div class="region">
+                            <p>{{ hotel.region.title }}</p>
+                        </div>
+                        <img
+                                src="{{ hotel.image.url }}"
+                                alt="detail-image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="container">
+            <div class="content-wrapper">
+                <div class="d-flex">
+                    <div class="ml-auto mr-auto">
+                        <div class="detail-title">
+                            <h2 class="text-uppercase rem-1-2">{{ hotel.title }}</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <div class="ml-auto mr-auto">
+                        <div class="detail-sub_title">
+                            <p>{{ hotel.short_description }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="container">
+            <div class="ml-auto mr-auto content-wrapper">
+                <div class="description-wrapper">
+                    {{ hotel.description|safe }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class=" ie-container-width-fix-2">
+            <div class="container ie-h-align-center-fix">
+                <div class="row content-wrapper">
+                    <div class="col-xs-12 ml-auto mr-auto ie-container-width-fix">
+                        <form action="{% url 'booking' %}" method="post"
+                              class="tm-search-form tm-section-pad-2">
+                            {% csrf_token %}
+                            <div class="form-row tm-search-form-row">
+                                <div class="form-group tm-form-element tm-form-element-100">
+                                    <select name="region"
+                                            class="form-control tm-select"
+                                            id="region" required>
+                                        <option value="{{ hotel.region.id }}">{{ hotel.region.title }}</option>
+                                    </select>
+                                    <i class="fa fa-building fa-2x tm-form-element-icon"></i>
+                                </div>
+                                <div class="form-group tm-form-element tm-form-element-100 select-hotel">
+                                    <select name="hotel"
+                                            class="form-control tm-select"
+                                            id="hotel">
+                                        <option value="{{ hotel.id }}">{{ hotel.title }}</option>
+                                    </select>
+                                    <i class="fa fa-building-o fa-2x tm-form-element-icon"></i>
+                                </div>
+                                <div class="form-group tm-form-element tm-form-element-100">
+                                    <i class="fa fa-user fa-2x tm-form-element-icon"></i>
+                                    <input name="name" type="text"
+                                           class="form-control" id="inputCity"
+                                           placeholder="Имя">
+                                </div>
+                            </div>
+                            <div class="form-row tm-search-form-row">
+                                <div class="form-group tm-form-element tm-form-element-50">
+                                    <i class="fa fa-calendar fa-2x tm-form-element-icon"></i>
+                                    <input name="enter_date" type="text"
+                                           class="form-control"
+                                           id="inputCheckIn"
+                                           placeholder="Дата заезда">
+                                </div>
+                                <div class="form-group tm-form-element tm-form-element-50">
+                                    <i class="fa fa-calendar fa-2x tm-form-element-icon"></i>
+                                    <input name="leave_date" type="text"
+                                           class="form-control"
+                                           id="inputCheckOut"
+                                           placeholder="Дата выезда">
+                                </div>
+                                <div class="form-group tm-form-element tm-form-element-100">
+                                    <i class="fa fa-phone fa-2x tm-form-element-icon"></i>
+                                    <input name="phone" type="text"
+                                           class="form-control" id="inputCity"
+                                           placeholder="Телефон">
+                                </div>
+
+                            </div>
+                            <div class="form-row tm-search-form-row">
+                                <div class="form-group tm-form-element tm-form-element-2">
+                                    <select name="adult"
+                                            class="form-control tm-select"
+                                            id="adult">
+                                        <option value="">Взрослые</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                    </select>
+                                    <i class="fa fa-2x fa-user tm-form-element-icon"></i>
+                                </div>
+                                <div class="form-group tm-form-element tm-form-element-2">
+                                    <select name="child"
+                                            class="form-control tm-select"
+                                            id="children">
+                                        <option value="">Дети</option>
+                                        <option value="0">0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                    </select>
+                                    <i class="fa fa-user tm-form-element-icon tm-form-element-icon-small"></i>
+                                </div>
+                                <div class="form-group tm-form-element tm-form-element-2">
+                                    <select name="room"
+                                            class="form-control tm-select"
+                                            id="room">
+                                        <option value="">Комнаты</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                    </select>
+                                    <i class="fa fa-2x fa-bed tm-form-element-icon"></i>
+                                </div>
+                                <div class="form-group tm-form-element tm-form-element-2">
+                                    <button type="submit"
+                                            class="btn btn-primary tm-btn-search">
+                                        Бронировать
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="form-row clearfix pl-2 pr-2 tm-fx-col-xs">
+                                <p class="tm-margin-b-0">В ближайшее время вам перезвонит менеджер для уточнения деталей
+                                    и подтверждения бронирования</p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
